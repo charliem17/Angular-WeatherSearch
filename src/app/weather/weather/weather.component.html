@@ -6,18 +6,15 @@
         <button (click)="getWeather()">Get Weather</button>
     </div>
     <div class="weather">
-        <div *ngIf="weather">
-            <div class="temp">
-                <p>Temperature: {{ currentWeather.main.temp }}f</p>
-                <p>Min: {{ currentWeather.main.temp_min }}f | Max: {{ currentWeather.main.temp_max }}f</p>
-                <p>Feels like: {{ currentWeather.main.feels_like }}f</p>
-            </div>
-            <p>Humidity: {{ currentWeather.main.humidity }}</p>
-            <div class="weather-desc">
-                <p>{{ currentWeather.weather.main }}</p>
-                <p>{{ currentWeather.weather.description }}</p>
-            </div>
-            <p>Wind speed: {{ currentWeather.wind.speed }}</p>
+        <div *ngIf="allWeather">
+            <p>
+                The temperature for {{ currentWeather.dt_txt }} in {{ allWeather.city.name }}, {{ allWeather.city.country }},
+                will be {{ currentWeather.main.temp }}° F with a minimum
+                of {{ currentWeather.main.temp_min }}° F and a maximum of {{ currentWeather.main.temp_max }}° F.
+                It feels like {{ currentWeather.main.feels_like }}° F.
+                Be prepared for {{ currentWeather.weather[0].description }}.
+                The humidity will be {{ currentWeather.main.humidity }}%.
+            </p>
         </div>
     </div>
 </section>

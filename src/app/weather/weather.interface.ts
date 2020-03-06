@@ -7,13 +7,19 @@ export interface Weather {
             temp_max,
             humidity
         },
-        weather: {
-            main,
-            description
-        },
+        weather: [
+            {
+                main,
+                description
+            }
+        ],
         wind: {
             speed
-        }
+        },
+        dt_txt
     }>,
-    city: Array<any>
+    city: {
+        name,
+        country
+    }
 }

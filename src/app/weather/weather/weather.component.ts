@@ -12,7 +12,7 @@ export class WeatherComponent implements OnInit {
   city: string = '';
   state: string = '';
 
-  weather: Weather;
+  allWeather: Weather;
   currentWeather: any;
 
   constructor(private weatherService: WeatherService) { }
@@ -25,12 +25,12 @@ export class WeatherComponent implements OnInit {
       console.log(`Fetching weather for ${this.city}, ${this.state}`);
       this.weatherService.getWeather(this.city, this.state).subscribe(
         (weather) => {
-          this.weather = weather;
-          this.currentWeather = this.weather.list[0];
+          this.allWeather = weather;
+          this.currentWeather = this.allWeather.list[0];
           console.log(`Fetched weather for ${this.city}, ${this.state}`);
         },
         error => {
-          console.log(`Could not find weather for ${this.city}, ${this.state}`);
+          console.error(`WeatherComponent: Could not find weather for ${this.city}, ${this.state}`);
         }
       );
     }
