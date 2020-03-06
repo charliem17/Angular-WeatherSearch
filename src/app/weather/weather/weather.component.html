@@ -1,0 +1,23 @@
+<section>
+    <h1>Weather Search</h1>
+    <div class="input">
+        <input type="text" placeholder="City" [(ngModel)]="city">
+        <input type="text" placeholder="State" [(ngModel)]="state">
+        <button (click)="getWeather()">Get Weather</button>
+    </div>
+    <div class="weather">
+        <div *ngIf="weather">
+            <div class="temp">
+                <p>Temperature: {{ currentWeather.main.temp }}f</p>
+                <p>Min: {{ currentWeather.main.temp_min }}f | Max: {{ currentWeather.main.temp_max }}f</p>
+                <p>Feels like: {{ currentWeather.main.feels_like }}f</p>
+            </div>
+            <p>Humidity: {{ currentWeather.main.humidity }}</p>
+            <div class="weather-desc">
+                <p>{{ currentWeather.weather.main }}</p>
+                <p>{{ currentWeather.weather.description }}</p>
+            </div>
+            <p>Wind speed: {{ currentWeather.wind.speed }}</p>
+        </div>
+    </div>
+</section>

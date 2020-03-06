@@ -1,0 +1,45 @@
+section {
+
+    width: 100%;
+    height: 100vh;
+
+    background: url('https://wallpaperplay.com/walls/full/d/0/d/69808.jpg') no-repeat center;
+    background-size: cover;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 6em;
+        margin: 1em 0;
+    }
+    .input {
+        input {
+            .field();
+        }
+        button {
+            .field();
+            display: block;
+            margin: 0 auto;
+            transition: background-color .5s;
+            &:hover {
+                background-color: rgba(30, 150, 30, 1);
+            }
+        }
+    }
+    .weather {
+        margin: 1em 0;
+        height: 250px;
+        font-size: 2em;
+        text-align: center;
+    }
+}
+
+.field() {
+    font-family: 'Poppins';
+    border: 1px solid black;
+    padding: .75em;
+    margin: .25em;
+}
