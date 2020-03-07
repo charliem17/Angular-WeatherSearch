@@ -12,8 +12,8 @@ export class WeatherComponent implements OnInit {
   city: string = '';
   state: string = '';
 
-  allWeather: Weather;
-  currentWeather: any;
+  currentWeather: Weather;
+  time: Date;
 
   constructor(private weatherService: WeatherService) { }
 
@@ -25,8 +25,8 @@ export class WeatherComponent implements OnInit {
       console.log(`Fetching weather for ${this.city}, ${this.state}`);
       this.weatherService.getWeather(this.city, this.state).subscribe(
         (weather) => {
-          this.allWeather = weather;
-          this.currentWeather = this.allWeather.list[0];
+          this.currentWeather = weather;
+          this.time = new Date();
           console.log(`Fetched weather for ${this.city}, ${this.state}`);
         },
         error => {

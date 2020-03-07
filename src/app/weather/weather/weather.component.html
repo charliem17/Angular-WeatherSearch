@@ -1,20 +1,25 @@
 <section>
-    <h1>Weather Search</h1>
-    <div class="input">
-        <input type="text" placeholder="City" [(ngModel)]="city">
-        <input type="text" placeholder="State" [(ngModel)]="state">
-        <button (click)="getWeather()">Get Weather</button>
-    </div>
-    <div class="weather">
-        <div *ngIf="allWeather">
-            <p>
-                The temperature for {{ currentWeather.dt_txt }} in {{ allWeather.city.name }}, {{ allWeather.city.country }},
-                will be {{ currentWeather.main.temp }}° F with a minimum
-                of {{ currentWeather.main.temp_min }}° F and a maximum of {{ currentWeather.main.temp_max }}° F.
-                It feels like {{ currentWeather.main.feels_like }}° F.
-                Be prepared for {{ currentWeather.weather[0].description }}.
-                The humidity will be {{ currentWeather.main.humidity }}%.
-            </p>
+    <div class="weather-component">
+        <h1>Weather Search</h1>
+        <div class="input">
+            <input type="text" placeholder="City" [(ngModel)]="city">
+            <input type="text" placeholder="Country / State" [(ngModel)]="state">
+            <button (click)="getWeather()">Get Weather</button>
+        </div>
+        <div class="weather-container">
+            <div class="weather" *ngIf="currentWeather">
+                <div class="location">
+                    <p>{{ currentWeather.name }}, {{ currentWeather.sys.country }}</p>
+                    <p class="time">as of {{ time.getDate() }}/{{ time.getMonth() + 1}}/{{ time.getFullYear() }} {{ time.getHours() }}:{{ time.getMinutes() }}:{{ time.getSeconds() }}</p>
+                </div>
+                <div class="data">
+                    <p><b>{{ currentWeather.main.temp }}°</b></p>
+                    <p>{{ currentWeather.weather[0].description }}</p>
+                    <p>feels like <b>{{ currentWeather.main.feels_like }}°</b></p>
+                    <p>H <b>{{ currentWeather.main.temp_max }}°</b> -- L <b>{{ currentWeather.main.temp_min }}°</b></p>
+                    <p>humidity <b>{{ currentWeather.main.humidity }}</b>%</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>

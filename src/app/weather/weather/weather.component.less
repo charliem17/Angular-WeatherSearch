@@ -5,41 +5,120 @@ section {
 
     background: url('https://wallpaperplay.com/walls/full/d/0/d/69808.jpg') no-repeat center;
     background-size: cover;
+    
+    .weather-component {
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: .75fr .5fr 1fr;
-    align-items: center;
-    text-align: center;
+        height: 90vh;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: .5fr .5fr 1fr;
+        align-items: center;
+        text-align: center;
+    
+        padding: .5em 0;
 
-    h1 {
-        grid-row: 1 / span 1;
-        font-size: 6em;
-    }
-    .input {
-        grid-row: 2 / span 1;
-
-        input {
-            .field();
+        @media (max-width: 800px) {
+            height: 100vh;
+            padding: 0;
         }
-        button {
-            .field();
-            display: block;
-            margin: 0 auto;
-            transition: background-color .5s;
-            &:hover {
-                background-color: rgba(30, 150, 30, 1);
+    
+        h1 {
+    
+            align-self: flex-end;
+            grid-row: 1 / span 1;
+            font-size: 6em;
+            line-height: 90px;
+            @media (max-width: 600px) {
+                line-height: 75px;
+                font-size: 4em;
             }
         }
-    }
-    .weather {
-        grid-row: 3 / span 1;
-        font-size: 1.75em;
-        text-align: center;
-        padding: 0 1em;
-    }
-}
+        .input {
+    
+            grid-row: 2 / span 1;
+    
+            input {
+    
+                .field();
+                @media (max-width: 600px) {
+                    display: block;
+                    width: 90%;
+                    margin: .25em auto;
+                }
+            }
+            button {
+    
+                .field();
+                display: block;
+                margin: 0 auto;
+                transition: background-color .5s;
+    
+                &:hover {
+    
+                    background-color: rgba(30, 150, 30, 1);
+    
+                }
+            }
+        }
+        @weather-width: 800px;
+        .weather-container {
+    
+            width: @weather-width;
+            height: 100%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, .75);
+            border-radius: 15px;
+    
+            @media (max-width: @weather-width) {
+                width: 100%;
+            }
+    
+            .weather {
+        
+                grid-row: 3 / span 1;
+                font-size: 1.75em;
+                text-align: center;
+                padding: 0 2em;
+                height: 100%;
+                
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+    
+                @media (max-width: 500px) {
+                    font-size: 1.5em;
+                }
+                @media (max-width: 320px) {
+                    font-size: 1.25em;
+                }
+    
+                .location{
+    
+                    margin-top: -1em;
 
+                    .time {
+                        font-size: .75em;
+                        margin-bottom: 1em;
+                    }
+    
+                }
+                .data {
+    
+                    text-align: left;
+                    display: flex;
+                    flex-flow: column;
+    
+                    @media (max-width: @weather-width) {
+                        text-align: center;
+                        margin-top: 1em;
+                    }
+    
+                }
+            }
+        }
+    }    
+}
 .field() {
     font-family: 'Poppins';
     border: 1px solid black;

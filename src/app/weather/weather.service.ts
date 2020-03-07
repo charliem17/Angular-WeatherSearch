@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 export class WeatherService {
 
   key: string = '327b3a6714cd4312441aa5cac7bbf366';
-  metric: string = 'imperial'; // standard, metric, imperial
+  unit: string = 'imperial'; // standard, metric, imperial
 
   constructor(private http: HttpClient) { }
 
   getWeather(cityName: string, state: string): Observable<any> {
     let location = `q=${cityName},${state}`;
-    return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?${location}&units=imperial&APPID=${this.key}`);
+    return this.http.get(`http://api.openweathermap.org/data/2.5/weather?${location}&units=${this.unit}&APPID=${this.key}`);
   }
 }
